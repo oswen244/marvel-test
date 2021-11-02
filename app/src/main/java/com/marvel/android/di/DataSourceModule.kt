@@ -5,5 +5,5 @@ import com.marvel.android.data.character.remote.RemoteDataSourceImp
 import org.koin.dsl.module
 
 val dataSourceModule = module {
-    single<RemoteDataSource> { RemoteDataSourceImp(service = get()) }
+    single<RemoteDataSource> { RemoteDataSourceImp(service = get(), apiKey = get()) }
 }

@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">AndroidTemplate</string>
-    <string name="msg_empty_character_list">No pudimos encontrar personajes</string>
+    <string name="msg_empty_character_list">We could not load any character</string>
 </resources>

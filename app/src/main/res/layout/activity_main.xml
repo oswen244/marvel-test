@@ -6,11 +6,17 @@
     android:layout_height="match_parent"
     tools:context="com.marvel.android.ui.characterlist.MainActivity">
 
+    <include
+        android:id="@+id/includeToolbar"
+        layout="@layout/home_toolbar" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/characterRecyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/item_character"/>
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/includeToolbar"
+        tools:listitem="@layout/item_character" />
 
     <ProgressBar
         android:id="@+id/characterProgress"

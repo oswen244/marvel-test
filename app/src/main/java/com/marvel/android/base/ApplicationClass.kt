@@ -10,6 +10,7 @@ class ApplicationClass: Application() {
         startKoin {
             modules(
                     listOf(
+                            hashKeyModule,
                             networkModule,
                             dataSourceModule,
                             repositoryModule,

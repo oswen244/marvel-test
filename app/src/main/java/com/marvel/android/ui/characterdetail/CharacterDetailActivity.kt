@@ -22,14 +22,7 @@ class CharacterDetailActivity : AppCompatActivity() {
     }
 
     private fun setupView() {
-        GlideApp.with(this)
-                .load(character.image)
-                .diskCacheStrategy(DiskCacheStrategy.DATA)
-                .into(binding.characterImageView)
 
-        binding.characterNameTextView.text = character.name
-        binding.characterStatusTextView.text = character.status
-        binding.characterSpeciesTextView.text = character.species
     }
 
     companion object{

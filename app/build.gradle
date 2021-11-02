@@ -24,6 +24,12 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
+        debug {
+            debuggable true
+            minifyEnabled false
+            buildConfigField "String", "publicKey", publicK
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
