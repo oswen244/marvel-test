@@ -29,6 +29,7 @@ android {
             debuggable true
             minifyEnabled false
             buildConfigField "String", "publicKey", publicK
+            buildConfigField "String", "api", '"https://gateway.marvel.com/v1/public/"'
         }
     }
     compileOptions {

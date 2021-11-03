@@ -13,5 +13,15 @@ class Utils {
         fun getTimeStamp(): Long{
             return System.currentTimeMillis()
         }
+        fun getLimit(inputLimit: Int?): Int?{
+            if(inputLimit == null) return null
+            if(inputLimit > 100){
+                return 100
+            }else if (inputLimit == 0){
+                return 1
+            }
+            return inputLimit
+        }
+
     }
 }

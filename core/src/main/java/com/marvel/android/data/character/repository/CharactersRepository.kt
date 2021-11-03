@@ -6,4 +6,5 @@ import com.marvel.android.data.character.model.CharacterEntity
 
 interface CharactersRepository {
     suspend fun getCharacters(limit: Int?, offset: Int?, ts: Long, hash: String): OperationResult<BaseModelResponse>
+    suspend fun getCharacterComics(id: Int, limit: Int?, offset: Int?, ts: Long, hash: String): OperationResult<BaseModelResponse>
 }

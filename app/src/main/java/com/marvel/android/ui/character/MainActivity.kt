@@ -1,4 +1,4 @@
-package com.marvel.android.ui.characterlist
+package com.marvel.android.ui.character
 
 import android.os.Bundle
 import android.view.View
@@ -6,17 +6,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.marvel.android.base.EndlessScrollViewListener
 import com.marvel.android.databinding.ActivityMainBinding
-import com.marvel.android.ui.characterdetail.CharacterDetailActivity
-import com.marvel.android.ui.characterlist.adapter.CharacterListAdapter
+import com.marvel.android.ui.character.adapter.CharacterListAdapter
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: CharacterListAdapter
-    private val characterListViewModel: CharacterListViewModel by viewModel()
+    private val characterViewModel: CharacterViewModel by viewModel()
     private lateinit var endlessScrollListener: EndlessScrollViewListener
     private var limit = 40
     private var offset = 0
@@ -28,20 +28,20 @@ class MainActivity : AppCompatActivity() {
 
         setupView()
         setupObservers()
-        characterListViewModel.getCharactersList(limit, offset)
+        characterViewModel.getCharactersList(limit, offset)
     }
 
     private fun setupView() {
-        adapter = CharacterListAdapter(characterListViewModel.characterList.value!!){
+        adapter = CharacterListAdapter(characterViewModel.characterList.value!!){
             val intent = CharacterDetailActivity.newInstance(this, it)
             startActivity(intent)
         }
         val layoutManager = LinearLayoutManager(this@MainActivity)
         endlessScrollListener = object : EndlessScrollViewListener(layoutManager) {
             override fun onLoadMore(totalItemsCount: Int, view: RecyclerView?) {
-                if(totalItemsCount < characterListViewModel.totalCharacters.value!!){
+                if(totalItemsCount < characterViewModel.totalCharacters.value!!){
                     offset += limit
-                    characterListViewModel.getCharactersList(limit, offset)
+                    characterViewModel.getCharactersList(limit, offset)
                 }
             }
         }
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupObservers() {
-        characterListViewModel.characterList.observe(this, {
+        characterViewModel.characterList.observe(this, {
             if(offset == 0){
                 adapter.updateList(it)
             }else{
@@ -62,13 +62,17 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        characterListViewModel.progressLoading.observe(this, {
+        characterViewModel.progressLoading.observe(this, {
             binding.characterProgress.visibility = if(it) View.VISIBLE else View.GONE
         })
 
-        characterListViewModel.viewEmptyList.observe(this, {
+        characterViewModel.viewEmptyList.observe(this, {
             binding.characterRecyclerview.visibility = if (it) View.GONE else View.VISIBLE
             binding.partialCharacterEmptyList.root.visibility = if(it) View.VISIBLE else View.GONE
+        })
+
+        characterViewModel.errorMessage.observe(this, {
+            Snackbar.make(binding.root, it, Snackbar.LENGTH_LONG).show()
         })
     }
 }

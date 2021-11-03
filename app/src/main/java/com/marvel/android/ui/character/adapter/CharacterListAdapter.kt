@@ -1,4 +1,4 @@
-package com.marvel.android.ui.characterlist.adapter
+package com.marvel.android.ui.character.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

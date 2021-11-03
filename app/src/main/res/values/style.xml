@@ -14,4 +14,25 @@
         <item name="android:textSize">18sp</item>
         <item name="fontFamily">sans-serif-medium</item>
     </style>
+
+    <style name="header_title">
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="h1_text">
+        <item name="fontFamily">sans-serif-black</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="h3_text">
+        <item name="fontFamily">sans-serif-condensed-medium</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+
+    <style name="paragraph_text">
+        <item name="fontFamily">sans-serif-light</item>
+        <item name="android:textSize">18sp</item>
+    </style>
 </resources>

@@ -16,4 +16,14 @@ class CharactersRepositoryImp(private val remoteDataSource: RemoteDataSource):
         return remoteDataSource.getCharacters(limit, offset, ts, hash)
     }
 
+    override suspend fun getCharacterComics(
+        id: Int,
+        limit: Int?,
+        offset: Int?,
+        ts: Long,
+        hash: String
+    ): OperationResult<BaseModelResponse> {
+        return remoteDataSource.getCharacterComics(id, limit, offset, ts, hash)
+    }
+
 }

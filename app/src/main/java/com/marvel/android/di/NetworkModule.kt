@@ -1,5 +1,6 @@
 package com.marvel.android.di
 
+import com.marvel.android.BuildConfig
 import com.marvel.android.data.character.remote.ServiceCharacter
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -11,7 +12,7 @@ import java.util.concurrent.TimeUnit
 private const val CONNECT_TIMEOUT = 10L
 private const val WRITE_TIMEOUT = 10L
 private const val READ_TIMEOUT = 20L
-private const val BASE_URL = "https://gateway.marvel.com:443/v1/public/"
+private const val BASE_URL = BuildConfig.api
 
 val networkModule = module {
 

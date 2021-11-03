@@ -21,4 +21,20 @@ class RemoteDataSourceImp(private val service: ServiceCharacter, private val api
             }
         }
     }
+
+    override suspend fun getCharacterComics(
+        id: Int,
+        limit: Int?,
+        offset: Int?,
+        ts: Long,
+        hash: String
+    ): OperationResult<BaseModelResponse> {
+        service.getCharacterComics(id, apiKey, ts, hash, limit, offset).let {
+            return if(it.isSuccessful && it.body() != null){
+                OperationResult.Success(it.body())
+            }else{
+                OperationResult.Error(Exception(it.body()?.status))
+            }
+        }
+    }
 }

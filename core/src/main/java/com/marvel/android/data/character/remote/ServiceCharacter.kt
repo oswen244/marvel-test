@@ -14,4 +14,13 @@ interface ServiceCharacter {
                               @Query("hash") hash: String,
                               @Query("limit") limit: Int?,
                               @Query("offset") offset: Int?): Response<BaseModelResponse>
+
+
+    @GET("characters/{id}/comics")
+    suspend fun getCharacterComics(@Path("id") id: Int,
+                                   @Query("apikey") apiKey: String,
+                                   @Query("ts") ts: Long,
+                                   @Query("hash") hash: String,
+                                   @Query("limit") limit: Int?,
+                                   @Query("offset") offset: Int?): Response<BaseModelResponse>
 }
