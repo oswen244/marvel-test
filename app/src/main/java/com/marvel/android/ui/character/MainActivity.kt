@@ -7,9 +7,11 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
+import com.marvel.android.base.Constants
 import com.marvel.android.base.EndlessScrollViewListener
 import com.marvel.android.databinding.ActivityMainBinding
 import com.marvel.android.ui.character.adapter.CharacterListAdapter
+import com.marvel.android.ui.character.utils.Utils
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
@@ -18,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adapter: CharacterListAdapter
     private val characterViewModel: CharacterViewModel by viewModel()
     private lateinit var endlessScrollListener: EndlessScrollViewListener
-    private var limit = 40
+    private var limit = Constants.MAX_LIMIT
     private var offset = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         setupView()
         setupObservers()
-        characterViewModel.getCharactersList(limit, offset)
+        characterViewModel.getCharactersList(limit, offset, Utils.isConnectedToInternet(this))
     }
 
     private fun setupView() {
@@ -41,7 +43,7 @@ class MainActivity : AppCompatActivity() {
             override fun onLoadMore(totalItemsCount: Int, view: RecyclerView?) {
                 if(totalItemsCount < characterViewModel.totalCharacters.value!!){
                     offset += limit
-                    characterViewModel.getCharactersList(limit, offset)
+                    characterViewModel.getCharactersList(limit, offset, Utils.isConnectedToInternet(this@MainActivity))
                 }
             }
         }

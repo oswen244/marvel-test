@@ -12,6 +12,7 @@ import com.marvel.android.base.ImageRepresentation
 import com.marvel.android.data.character.model.CharacterEntity
 import com.marvel.android.databinding.ActivityCharacterDetailBinding
 import com.marvel.android.ui.character.adapter.ComicsAdapter
+import com.marvel.android.ui.character.utils.Utils
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class CharacterDetailActivity : AppCompatActivity() {
@@ -30,7 +31,11 @@ class CharacterDetailActivity : AppCompatActivity() {
     }
 
     private fun setupView() = with(binding) {
-        characterViewModel.getCharacterComics(character.id, character.comics?.available, 0)
+        characterViewModel.getCharacterComics(
+            character.id,
+            character.comics?.available?.let { Utils.getLimit(it) },
+            0,
+            Utils.isConnectedToInternet(this@CharacterDetailActivity))
         includeToolbar.apply {
             title.text = character.name
             imageViewBack.setOnClickListener {
@@ -56,6 +61,11 @@ class CharacterDetailActivity : AppCompatActivity() {
         })
         characterViewModel.progressLoading.observe(this, {
             binding.loading.visibility = if(it) View.VISIBLE else View.GONE
+        })
+        characterViewModel.errorMessage.observe(this, {
+            binding.partialEmptyStatus.msgEmptyCharacterList.text = it
+            binding.partialEmptyStatus.root.visibility = View.VISIBLE
+            binding.constraintCharacterInfo.visibility = View.GONE
         })
     }
 

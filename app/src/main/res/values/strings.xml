@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AndroidTemplate</string>
+    <string name="app_name">Marvel Characters</string>
     <string name="msg_empty_character_list">We could not load any character</string>
     <string name="description">Description</string>
     <string name="comics">Comics</string>

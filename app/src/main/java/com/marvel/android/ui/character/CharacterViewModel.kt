@@ -38,10 +38,10 @@ class CharacterViewModel(private val getCharactersUseCase: GetCharactersUseCase,
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> = _errorMessage
 
-    fun getCharactersList(limit: Int?, offset: Int?){
+    fun getCharactersList(limit: Int?, offset: Int?, isNetWorkAvailable: Boolean){
         viewModelScope.launch(Dispatchers.IO){
             _progressLoading.postValue(true)
-            getCharactersUseCase.execute(limit, offset).let { operationResult ->
+            getCharactersUseCase.execute(limit, offset, isNetWorkAvailable).let { operationResult ->
                 when (operationResult) {
                     is OperationResult.Success -> {
                         _totalCharacters.postValue(operationResult.data?.data?.total)
@@ -64,10 +64,10 @@ class CharacterViewModel(private val getCharactersUseCase: GetCharactersUseCase,
         }
     }
 
-    fun getCharacterComics(id: Int, limit: Int?, offset: Int?){
+    fun getCharacterComics(id: Int, limit: Int?, offset: Int?, isNetWorkAvailable: Boolean){
         viewModelScope.launch(Dispatchers.IO) {
             _progressLoading.postValue(true)
-            getCharacterComicsUseCase.execute(id, limit, offset).let { operationResult ->
+            getCharacterComicsUseCase.execute(id, limit, offset, isNetWorkAvailable).let { operationResult ->
                 when(operationResult){
                     is OperationResult.Success -> {
                         val comics = Gson().fromJsonString<MutableList<ComicEntity>>(
