@@ -16,7 +16,7 @@
         android:theme="@style/Theme.AndroidTemplate">
         <activity android:name="com.marvel.android.ui.character.CharacterDetailActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="com.marvel.android.ui.character.MainActivity"
+        <activity android:name="com.marvel.android.ui.character.CharacterListActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>

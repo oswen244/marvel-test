@@ -5,10 +5,12 @@
       <map>
         <entry key="..\:/Documents/Sites/marvel-test/app/src/main/res/drawable/ic_chevron_left.xml" value="0.310126582278481" />
         <entry key="..\:/Documents/Sites/marvel-test/app/src/main/res/layout/activity_character_detail.xml" value="0.30085470085470084" />
+        <entry key="..\:/Documents/Sites/marvel-test/app/src/main/res/layout/activity_character_list.xml" value="0.29578059071729956" />
         <entry key="..\:/Documents/Sites/marvel-test/app/src/main/res/layout/activity_main.xml" value="0.3175925925925926" />
         <entry key="..\:/Documents/Sites/marvel-test/app/src/main/res/layout/home_toolbar.xml" value="0.30085470085470084" />
         <entry key="..\:/Documents/Sites/marvel-test/app/src/main/res/layout/item_character.xml" value="0.30085470085470084" />
         <entry key="..\:/Documents/Sites/marvel-test/app/src/main/res/layout/item_comic.xml" value="0.29957264957264956" />
+        <entry key="..\:/Documents/Sites/marvel-test/app/src/main/res/layout/layout_search_tool.xml" value="0.29957264957264956" />
         <entry key="..\:/Documents/Sites/marvel-test/app/src/main/res/layout/partial_character_empty_list.xml" value="0.30085470085470084" />
         <entry key="..\:/Documents/Sites/marvel-test/app/src/main/res/layout/toolbar_transparent.xml" value="0.25" />
       </map>

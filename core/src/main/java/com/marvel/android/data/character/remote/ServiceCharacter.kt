@@ -10,6 +10,7 @@ import retrofit2.http.Query
 interface ServiceCharacter {
     @GET("characters")
     suspend fun getCharacters(@Query("apikey") apiKey: String,
+                              @Query("name") name: String?,
                               @Query("ts") ts: Long,
                               @Query("hash") hash: String,
                               @Query("limit") limit: Int?,

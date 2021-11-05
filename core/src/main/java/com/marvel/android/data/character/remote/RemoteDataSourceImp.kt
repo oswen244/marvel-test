@@ -7,12 +7,13 @@ import java.lang.Exception
 
 class RemoteDataSourceImp(private val service: ServiceCharacter, private val apiKey: String): RemoteDataSource {
     override suspend fun getCharacters(
+        name: String?,
         limit: Int?,
         offset: Int?,
         ts: Long,
         hash: String
     ): OperationResult<BaseModelResponse> {
-        val result = service.getCharacters(apiKey, ts, hash, limit, offset)
+        val result = service.getCharacters(apiKey, name, ts, hash, limit, offset)
         result.let {
             return if(it.isSuccessful && it.body() != null){
                 OperationResult.Success(it.body())

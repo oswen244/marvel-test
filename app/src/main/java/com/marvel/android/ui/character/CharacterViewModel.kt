@@ -21,6 +21,9 @@ class CharacterViewModel(private val getCharactersUseCase: GetCharactersUseCase,
     private var _characterList = MutableLiveData<MutableList<CharacterEntity>>().apply { value = arrayListOf() }
     val characterList: LiveData<MutableList<CharacterEntity>> = _characterList
 
+    private var _searchCharacterList = MutableLiveData<MutableList<CharacterEntity>>().apply { value = arrayListOf() }
+    val searchCharacterList: LiveData<MutableList<CharacterEntity>> = _searchCharacterList
+
     private var _characterComicList = MutableLiveData<MutableList<ComicEntity>>().apply { value = arrayListOf() }
     val characterComicsList: LiveData<MutableList<ComicEntity>> = _characterComicList
 
@@ -36,10 +39,10 @@ class CharacterViewModel(private val getCharactersUseCase: GetCharactersUseCase,
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> = _errorMessage
 
-    fun getCharactersList(limit: Int?, offset: Int?, isNetWorkAvailable: Boolean){
+    fun getCharactersList(name: String?, limit: Int?, offset: Int?, isNetWorkAvailable: Boolean){
         viewModelScope.launch(Dispatchers.IO){
             _progressLoading.postValue(true)
-            getCharactersUseCase.execute(limit, offset, isNetWorkAvailable).let { operationResult ->
+            getCharactersUseCase.execute(name, limit, offset, isNetWorkAvailable).let { operationResult ->
                 when (operationResult) {
                     is OperationResult.Success -> {
                         _totalCharacters.postValue(operationResult.data?.data?.total)
@@ -47,7 +50,12 @@ class CharacterViewModel(private val getCharactersUseCase: GetCharactersUseCase,
                             Gson().toJson(operationResult.data?.data?.results)
                         )
                         if(characters.isNotEmpty()){
-                            _characterList.postValue(characters)
+                            name?.let {
+                                _searchCharacterList.postValue(characters)
+                                _totalCharacters.postValue(characters.size - 1)
+                            }?:run{
+                                _characterList.postValue(characters)
+                            }
                             _viewEmptyList.postValue(false)
                         }else{
                             _viewEmptyList.postValue(true)

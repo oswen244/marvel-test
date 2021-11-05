@@ -3,4 +3,5 @@
     <string name="msg_empty_character_list">We could not load any character</string>
     <string name="description">Description</string>
     <string name="comics">Comics</string>
+    <string name="searchHint">Type your favorite character here!</string>
 </resources>

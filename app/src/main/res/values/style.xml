@@ -30,9 +30,13 @@
         <item name="android:textSize">18sp</item>
     </style>
 
-
     <style name="paragraph_text">
         <item name="fontFamily">sans-serif-light</item>
         <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="queryBackground">@color/white</item>
+        <item name="queryHint">@string/searchHint</item>
     </style>
 </resources>
