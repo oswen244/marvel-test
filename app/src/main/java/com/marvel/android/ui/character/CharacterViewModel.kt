@@ -5,14 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
-import com.marvel.android.BuildConfig
-import com.marvel.android.base.Constants
-import com.marvel.android.base.Extensions.fromJsonString
 import com.marvel.android.base.OperationResult
 import com.marvel.android.data.character.model.CharacterEntity
 import com.marvel.android.data.comics.model.ComicEntity
 import com.marvel.android.domain.GetCharacterComicsUseCase
 import com.marvel.android.domain.GetCharactersUseCase
+import com.marvel.android.ui.character.utils.Extensions.fromJsonString
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -56,6 +54,7 @@ class CharacterViewModel(private val getCharactersUseCase: GetCharactersUseCase,
                         }
                     }
                     is OperationResult.Error -> {
+                        _viewEmptyList.postValue(true)
                         _errorMessage.postValue(operationResult.exception?.message)
                     }
                 }

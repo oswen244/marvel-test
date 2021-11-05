@@ -17,15 +17,14 @@ class CharactersRepositoryImp(private val remoteDataSource: RemoteDataSource,
         hash: String,
         isNetWorkAvailable: Boolean
     ): OperationResult<BaseModelResponse> {
-        var result = localDataSource.getCharacters()
-        if(result is OperationResult.Error && isNetWorkAvailable){
-           result = remoteDataSource.getCharacters(limit, offset, ts, hash)
+        if(isNetWorkAvailable){
+            val result = remoteDataSource.getCharacters(limit, offset, ts, hash)
             if(result is OperationResult.Success){
                 result.data?.let { localDataSource.saveCharacters(it) }
                 return result
             }
         }
-        return result
+        return localDataSource.getCharacters()
     }
 
     override suspend fun getCharacterComics(
