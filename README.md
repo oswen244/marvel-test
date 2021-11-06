@@ -29,6 +29,5 @@
   - ComicEntity: Entity of the comic
   - ThumnailEntity: Entity for handle images from the API response
   - ComicUriEntity: Entity for handle aditional information of the comics
-  - CharacterListResponse: Entity for handle API
   
   
