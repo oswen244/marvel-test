@@ -1,7 +1,6 @@
 package com.marvel.android.data.character.remote
 
 import com.marvel.android.base.BaseModelResponse
-import com.marvel.android.data.character.model.CharacterListResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
