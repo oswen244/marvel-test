@@ -1,4 +1,4 @@
-package com.koombea.androidtemplate.repository
+package com.marvel.android.repository
 
 import com.marvel.android.base.BaseDataModel
 import com.marvel.android.base.BaseModelResponse

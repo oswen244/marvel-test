@@ -1,4 +1,4 @@
-package com.koombea.androidtemplate.utils
+package com.marvel.android.utils
 
 /*
  * Copyright (C) 2019 The Android Open Source Project

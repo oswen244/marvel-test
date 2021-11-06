@@ -1,13 +1,12 @@
-package com.koombea.androidtemplate
+package com.marvel.android
 
 import android.app.Application
 import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.Observer
-import com.koombea.androidtemplate.repository.FakeCharacterRepository
-import com.koombea.androidtemplate.repository.FakeEmptyCharacterRepository
-import com.koombea.androidtemplate.repository.FakeErrorCharacterRepository
-import com.koombea.androidtemplate.utils.getOrAwaitValue
+import com.marvel.android.repository.FakeCharacterRepository
+import com.marvel.android.repository.FakeEmptyCharacterRepository
+import com.marvel.android.repository.FakeErrorCharacterRepository
+import com.marvel.android.utils.getOrAwaitValue
 import com.marvel.android.base.OperationResult
 import com.marvel.android.data.character.model.CharacterEntity
 import com.marvel.android.data.character.model.ThumbnailEntity
