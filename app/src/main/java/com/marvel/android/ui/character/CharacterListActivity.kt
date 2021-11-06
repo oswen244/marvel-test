@@ -89,7 +89,7 @@ class CharacterListActivity : AppCompatActivity() {
     }
 
     private fun setupCharacterAdapter() {
-        adapter = CharacterListAdapter(characterViewModel.characterList.value!!){
+        adapter = CharacterListAdapter(arrayListOf()){
             val intent = CharacterDetailActivity.newInstance(this, it)
             startActivity(intent)
         }

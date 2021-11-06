@@ -39,4 +39,6 @@ ext{
     archLifecycleVersion = '2.2.0'
     glideVersion='4.11.0'
     okhttp3 ='3.11.0'
+    mockitoVersion= '4.0.0'
+    archTestingVersion = '2.1.0'
 }

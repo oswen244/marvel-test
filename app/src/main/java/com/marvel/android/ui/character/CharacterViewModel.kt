@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 class CharacterViewModel(private val getCharactersUseCase: GetCharactersUseCase,
                          private val getCharacterComicsUseCase: GetCharacterComicsUseCase): ViewModel() {
 
-    private var _characterList = MutableLiveData<MutableList<CharacterEntity>>().apply { value = arrayListOf() }
+    private var _characterList = MutableLiveData<MutableList<CharacterEntity>>()
     val characterList: LiveData<MutableList<CharacterEntity>> = _characterList
 
     private var _searchCharacterList = MutableLiveData<MutableList<CharacterEntity>>().apply { value = arrayListOf() }
